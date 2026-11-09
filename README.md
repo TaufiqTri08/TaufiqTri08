@@ -1,10 +1,9 @@
-## 👋 Hi, I'm Taufiq Tri Winardi
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1000&color=7AA2F7&vCenter=true&width=600&lines=Hi+%F0%9F%91%8B%2C+I'm+Taufiq+Tri+Winardi;Information+Systems+Student;Web+%26+Mobile+App+Developer;Building+Scalable+Digital+Solutions)](https://git.io/typing-svg)
+
 
 🎓 Information Systems student at **UPN "Veteran" East Java**  
 💻 Focused on **Web Development** & **Mobile App Development**  
 📱 Passionate about building scalable, user-friendly applications  
-
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1000&color=7AA2F7&vCenter=true&width=600&lines=Hi+%F0%9F%91%8B%2C+I'm+Taufiq+Tri+Winardi;Information+Systems+Student;Web+%26+Mobile+App+Developer;Building+Scalable+Digital+Solutions)](https://git.io/typing-svg)
 
 ---
 
@@ -47,6 +46,10 @@
 
 ---
 
+### 🐍 Classic Snake Game
+![Snake animation](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg)
+
+---
 
 
 ✨ *"Build with purpose, learn with passion."*
