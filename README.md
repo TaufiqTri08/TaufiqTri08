@@ -4,6 +4,8 @@
 💻 Focused on **Web Development** & **Mobile App Development**  
 📱 Passionate about building scalable, user-friendly applications  
 
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1000&color=7AA2F7&vCenter=true&width=600&lines=Hi+%F0%9F%91%8B%2C+I'm+Taufiq+Tri+Winardi;Information+Systems+Student;Web+%26+Mobile+App+Developer;Building+Scalable+Digital+Solutions)](https://git.io/typing-svg)
+
 ---
 
 ## 🌐 Socials
