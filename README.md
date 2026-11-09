@@ -51,5 +51,24 @@
 
 ---
 
+---
+
+## 🎮 Play Community Tic-Tac-Toe!
+
+*Klik salah satu kotak kosong (⬜) di bawah untuk mengambil langkah, lalu klik tombol **Submit new issue**. Bot akan memperbarui papan secara otomatis!*
+
+<!-- TICTACTOE:START -->
+<!-- STATE:---------:X -->
+**Giliran Saat Ini:** ❌ **X**
+
+| | A | B | C |
+| :---: | :---: | :---: | :---: |
+| **1** | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C0&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C1&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C2&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) |
+| **2** | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C3&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C4&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C5&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) |
+| **3** | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C6&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C7&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) | [⬜](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7C8&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!) |
+
+🔄 [Reset Permainan](https://github.com/TaufiqTri08/TaufiqTri08/issues/new?title=ttt%7Creset&body=Klik+Submit+new+issue+untuk+mereset+papan+permainan.)
+<!-- TICTACTOE:END -->
+
 
 ✨ *"Build with purpose, learn with passion."*
