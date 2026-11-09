@@ -1,0 +1,105 @@
+name: Tic-Tac-Toe Bot
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  play:
+    if: startsWith(github.event.issue.title, 'ttt|')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Update Tic-Tac-Toe Board
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          PLAYER: ${{ github.event.issue.user.login }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - << 'EOF'
+          import os, re
+
+          with open("README.md", "r", encoding="utf-8") as f:
+              content = f.read()
+
+          state_match = re.search(r"<!-- STATE:([XO\-]{9}):([XO]) -->", content)
+          board = list(state_match.group(1)) if state_match else ["-"] * 9
+          turn = state_match.group(2) if state_match else "X"
+
+          cmd = os.environ["ISSUE_TITLE"].split("|")[1].strip()
+          player = os.environ["PLAYER"]
+          repo = os.environ["REPO"]
+
+          if cmd == "reset":
+              board = ["-"] * 9
+              turn = "X"
+              status = f"**Giliran Saat Ini:** ❌ **X** *(Direset oleh @{player})*"
+              game_over = False
+          elif cmd.isdigit() and 0 <= int(cmd) < 9 and board[int(cmd)] == "-":
+              idx = int(cmd)
+              board[idx] = turn
+              wins = [(0,1,2),(3,4,5),(6,7,8),(0,3,6),(1,4,7),(2,5,8),(0,4,8),(2,4,6)]
+              won = any(board[a] == board[b] == board[c] != "-" for a, b, c in wins)
+
+              if won:
+                  icon = "❌" if turn == "X" else "⭕"
+                  status = f"🎉 **Pemenang: {icon} {turn} (oleh @{player})!** Klik Reset untuk main lagi."
+                  game_over = True
+              elif "-" not in board:
+                  status = f"🤝 **Hasil Seri (Draw)!** Klik Reset untuk main lagi."
+                  game_over = True
+              else:
+                  turn = "O" if turn == "X" else "X"
+                  icon = "❌" if turn == "X" else "⭕"
+                  status = f"**Giliran Saat Ini:** {icon} **{turn}** *(Langkah terakhir oleh @{player})*"
+                  game_over = False
+          else:
+              icon = "❌" if turn == "X" else "⭕"
+              status = f"**Giliran Saat Ini:** {icon} **{turn}**"
+              game_over = False
+
+          def render_cell(i):
+              if board[i] == "X": return "❌"
+              if board[i] == "O": return "⭕"
+              if game_over: return "⬜"
+              return f"[⬜](https://github.com/{repo}/issues/new?title=ttt%7C{i}&body=Cukup+klik+tombol+Submit+new+issue+di+bawah+untuk+menjalankan+langkahmu!)"
+
+          cells = [render_cell(i) for i in range(9)]
+          new_block = f"""<!-- TICTACTOE:START -->
+          <!-- STATE:{''.join(board)}:{turn} -->
+          {status}
+
+          | | A | B | C |
+          | :---: | :---: | :---: | :---: |
+          | **1** | {cells[0]} | {cells[1]} | {cells[2]} |
+          | **2** | {cells[3]} | {cells[4]} | {cells[5]} |
+          | **3** | {cells[6]} | {cells[7]} | {cells[8]} |
+
+          🔄 [Reset Permainan](https://github.com/{repo}/issues/new?title=ttt%7Creset&body=Klik+Submit+new+issue+untuk+mereset+papan+permainan.)
+          <!-- TICTACTOE:END -->"""
+
+          new_block = "\n".join(line.strip() for line in new_block.splitlines())
+          updated = re.sub(r"<!-- TICTACTOE:START -->.*?<!-- TICTACTOE:END -->", new_block, content, flags=re.DOTALL)
+
+          with open("README.md", "w", encoding="utf-8") as f:
+              f.write(updated)
+          EOF
+
+      - name: Commit & Push Updated Board
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🎮 Tic-Tac-Toe move by @${{ github.event.issue.user.login }}" && git push)
+
+      - name: Close Issue Automatically
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue close ${{ github.event.issue.number }} --comment "Langkah berhasil diproses! Kembali ke [profil TaufiqTri08](https://github.com/${{ github.repository }}) untuk melihat papan terbaru."
